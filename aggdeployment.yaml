@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nagp-aggregator-deployment
+  labels:
+    app: nagp-aggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nagp-aggregator
+  template:
+    metadata:
+      labels:
+        app: nagp-aggregator
+    spec: 
+      containers:
+      - name: nagp-aggregator
+        image: jagratigoyal/aggregator
+        ports:
+        - containerPort: 8090
